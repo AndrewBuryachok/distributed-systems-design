@@ -1,0 +1,22 @@
+version: '3'
+services:
+  primary:
+    build:
+      context: .
+      dockerfile: Docker-primary
+    ports:
+      - 5000:5000
+    environment:
+      - URLS=http://secondary1:5000,http://secondary2:5000
+  secondary1:
+    build:
+      context: .
+      dockerfile: Docker-secondary
+    ports:
+      - 5001:5000
+  secondary2:
+    build:
+      context: .
+      dockerfile: Docker-secondary
+    ports:
+      - 5002:5000
